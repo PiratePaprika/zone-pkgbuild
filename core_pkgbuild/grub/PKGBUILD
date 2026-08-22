@@ -1,3 +1,9 @@
+# BUILD_HOST_REQUIRED: This PKGBUILD pins grub at 2.06 (2022). To update on a Linux host:
+#   1. Update the three git commit hashes (grub, grub-extras, gnulib) to current HEAD
+#   2. Update unifont URL/hash to the current release (https://unifoundry.com/unifont/)
+#   3. Verify all local patches still apply cleanly (git am / patch --dry-run)
+#   4. Run: updpkgsums && makepkg -sc && namcap PKGBUILD
+
 # Maintainer: Philip Müller <philm[at]manjaro[dot]org>
 # Maintainer: Helmut Stult <helmut[at]manjaro[dot]org>
 # Maintainer: Stefano Capitani <stefano[at]manjaro[dot]org>

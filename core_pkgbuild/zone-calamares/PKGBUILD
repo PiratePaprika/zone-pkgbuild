@@ -8,16 +8,18 @@
 
 pkgname=zone-calamares
 _pkgname=calamares
-pkgver=3.3.14
-pkgrel=1
+pkgver=3.3.11
+pkgrel=2
 pkgdesc='Distribution-independent installer framework'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url="https://github.com/calamares/calamares/releases"
 depends=('kf6-kconfig' 'kf6-kcoreaddons' 'kf6-kiconthemes' 'kf6-ki18n' 'kf6-kio' 'kf6-solid'
-         'yaml-cpp' 'kpmcore>=24.02.0' 'mkinitcpio-openswap'
-         'boost-libs' 'ckbcomp' 'hwinfo' 'qt6-svg' 'polkit-qt6' 'gtk-update-icon-cache'
+         'yaml-cpp' 'kpmcore>=24.02.0'
+         'boost-libs' 'hwinfo' 'qt6-svg' 'polkit-qt6' 'gtk-update-icon-cache'
          'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
+optdepends=('ckbcomp: keyboard layout configuration support'
+            'mkinitcpio-openswap: encrypted swap partition support')
 conflicts=()
 makedepends=('extra-cmake-modules' 'qt6-tools' 'qt6-translations' 'git' 'boost')
 backup=('usr/share/calamares/modules/bootloader.conf'
@@ -30,7 +32,7 @@ source=("$_pkgname-$pkgver::$url/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
 	"calamares_polkit"
 	"49-nopasswd-calamares.rules")
 
-sha256sums=('5547f80db067dea923ae693ba6bb88eb2b2eeac1da3ebec42fce453e31c290c0'
+sha256sums=('SKIP'
             'c1fcac65d78a33a45b0f1283ac85d6fef0099d899f30b468e65147b2d3820246'
             '4c8b48518b0047672e835e0a6c8a66342b316ab8835cf4c331030de4830dcea2'
             '56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176')

@@ -161,6 +161,7 @@ update_repo() {
     if [[ -d "$repo_root/.git" ]]; then
         git -C "$repo_root" add .
         git -C "$repo_root" commit -m "Update $(basename "$repo_root")" --quiet || true
+        git -C "$repo_root" push --quiet || log_warn "git push failed for $(basename "$repo_root")"
     fi
 }
 

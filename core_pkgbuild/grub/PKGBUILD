@@ -38,7 +38,7 @@ _UNIFONT_VER="13.0.06"
 
 pkgname="grub"
 pkgver=2.06
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/grub/"
@@ -222,7 +222,7 @@ _build_grub-common_and_bios() {
 	export GRUB_CONTRIB="${srcdir}/grub-bios/grub-extras/"
 
 	echo "Unset all compiler FLAGS for bios build..."
-	unset CFLAGS
+	export CFLAGS="-std=gnu17"
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
@@ -251,7 +251,7 @@ _build_grub-efi() {
 	cd "${srcdir}/grub-efi-${_EFI_ARCH}/"
 
 	echo "Unset all compiler FLAGS for ${_EFI_ARCH} efi build..."
-	unset CFLAGS
+	export CFLAGS="-std=gnu17"
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS
@@ -275,7 +275,7 @@ _build_grub-emu() {
 	cd "${srcdir}/grub-emu/"
 
 	echo "Unset all compiler FLAGS for emu build..."
-	unset CFLAGS
+	export CFLAGS="-std=gnu17"
 	unset CPPFLAGS
 	unset CXXFLAGS
 	unset LDFLAGS

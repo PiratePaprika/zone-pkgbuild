@@ -50,6 +50,14 @@ build_pkg() {
     done
 
     stamp_success "$dir"
+
+    # Remove git bare-repo caches left by makepkg for git:// sources.
+    # Bare repos are identified by the presence of HEAD + objects/ in a subdir.
+    # makepkg -c already removes src/ and pkg/; these caches are not touched by it.
+    while IFS= read -r d; do
+        [[ -f "$d/HEAD" && -d "$d/objects" ]] && rm -rf "$d"
+    done < <(find "$dir" -maxdepth 1 -mindepth 1 -type d 2>/dev/null)
+
     return 0
 }
 

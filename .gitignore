@@ -1,1 +1,8 @@
 *.pkg.tar.zst
+*.pkg.tar.zst.sig
+out/
+local-x86_64/
+core-x86_64/
+3rdparty-x86_64/
+3rdparty_pkgbuild/3rdparty/
+**/.build-stamp

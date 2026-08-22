@@ -1,16 +1,6 @@
 #!/bin/bash
-echo "################################################################"
-echo "################### Making the package"
-echo "################################################################"
-makepkg -sc --noconfirm
-yes| paru -c
+set -euo pipefail
+makepkg -scf --noconfirm --skippgpcheck
+pacman -Qdtq 2>/dev/null | xargs -r sudo pacman -Rns --noconfirm
 mkdir -p ../../core-x86_64
-mv *.pkg.tar.zst ../../core-x86_64
-echo "################################################################"
-echo "################### Moved the .zst file to x86_64 folder"
-echo "################################################################"
-find . -type d -not -path "." -not -path "./files" -exec sudo rm -r "{}" \;
-find . -type f -not -name "build.sh" -not -name "*.install" -not -name PKGBUILD -not -name "*.pkg.tar.zst" -not -name "*.hook" -not -name "zone-hooks-runner" -delete
-echo "################################################################"
-echo "################### Removed all redundant files and folders"
-echo "################################################################"
+mv ./*.pkg.tar.zst ../../core-x86_64/

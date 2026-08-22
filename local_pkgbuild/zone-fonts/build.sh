@@ -1,15 +1,6 @@
 #!/bin/bash
-echo "################################################################"
-echo "################### Making the package"
-echo "################################################################"
-makepkg -sc --noconfirm
-yes| paru -c
+set -euo pipefail
+makepkg -scf --noconfirm --skippgpcheck
+pacman -Qdtq 2>/dev/null | xargs -r sudo pacman -Rns --noconfirm
 mkdir -p ../../local-x86_64
-mv *.pkg.tar.zst ../../local-x86_64
-echo "################################################################"
-echo "################### Moved the .zst file to x86_64 folder"
-echo "################################################################"
-find . -type d -not -path "." -path -exec sudo rm -r "{}" \;
-echo "################################################################"
-echo "################### Removed all redundant files and folders"
-echo "################################################################"
+mv ./*.pkg.tar.zst ../../local-x86_64/
